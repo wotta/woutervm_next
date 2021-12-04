@@ -20,7 +20,7 @@
   },
   "devDependencies": {},
   "author": {
-    "name": "A Strapi developer"
+    "name": "Wouter van Marrum"
   },
   "strapi": {
     "uuid": "ce5c328e-b3eb-4a73-bd0f-0f7707f678aa",
