@@ -1,18 +1,43 @@
 import React from "react"
-import Articles from "../components/articles"
-import Layout from "../components/layout"
+import Image from "next/image"
 import Seo from "../components/seo"
 import { fetchAPI } from "../lib/api"
+import Layout from "../components/layout"
+import ReactMarkdown from "react-markdown"
 
-const Home = ({ articles, categories, homepage }) => {
+const Home = ({ categories, homepage }) => {
+  let content = homepage.attributes.builder.find(
+    (item) => item.__component === "builder.content"
+  )
+
   return (
     <Layout categories={categories}>
       <Seo seo={homepage.attributes.seo} />
-      <div className="uk-section">
-        <div className="uk-container uk-container-large">
+      <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
+        <main>
           <h1>{homepage.attributes.hero.title}</h1>
-          <Articles articles={articles} />
-        </div>
+          <article>
+            <ReactMarkdown
+              source={content.content}
+              escapeHtml={false}
+              components={{
+                img: (props) => {
+                  console.log(props)
+                  return (
+                    <Image
+                      src={props.src}
+                      width={props.width}
+                      height={props.height}
+                      alt={props.alt}
+                      quality={80}
+                      className="rounded-lg"
+                    />
+                  )
+                },
+              }}
+            />
+          </article>
+        </main>
       </div>
     </Layout>
   )
@@ -20,20 +45,19 @@ const Home = ({ articles, categories, homepage }) => {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [articlesRes, categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/articles", { populate: "*" }),
+  const [categoriesRes, homepageRes] = await Promise.all([
     fetchAPI("/categories", { populate: "*" }),
     fetchAPI("/homepage", {
       populate: {
         hero: "*",
         seo: { populate: "*" },
+        builder: { populate: "*" },
       },
     }),
   ])
 
   return {
     props: {
-      articles: articlesRes.data,
       categories: categoriesRes.data,
       homepage: homepageRes.data,
     },
