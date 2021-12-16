@@ -1,10 +1,10 @@
-import {useRouter} from "next/router";
+import { useRouter } from "next/router"
 
 export function isCurrent(path) {
-    const { asPath, pathname } = useRouter();
+  const { asPath, pathname } = useRouter()
 
-    console.log(asPath); // '/blog/xyz'
-    console.log(pathname); // '/blog/[slug]'
+  // console.log(asPath) // '/blog/xyz'
+  // console.log(pathname) // '/blog/[slug]'
 
-    return asPath === path;
+  return asPath === path
 }
