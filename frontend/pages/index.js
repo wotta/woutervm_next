@@ -1,7 +1,6 @@
 import React from "react"
-import Image from "next/image"
 import Seo from "../components/seo"
-import { fetchAPI } from "../lib/api"
+import { fetchAPI, getStrapiURL } from "../lib/api"
 import Layout from "../components/layout"
 import ReactMarkdown from "react-markdown"
 
@@ -18,21 +17,26 @@ const Home = ({ categories, homepage }) => {
           <h1>{homepage.attributes.hero.title}</h1>
           <article>
             <ReactMarkdown
-              source={content.content}
-              escapeHtml={false}
+              children={content.content}
               components={{
-                img: (props) => {
-                  console.log(props)
-                  return (
-                    <Image
-                      src={props.src}
-                      width={props.width}
-                      height={props.height}
-                      alt={props.alt}
-                      quality={80}
-                      className="rounded-lg"
-                    />
-                  )
+                p: ({ node, children }) => {
+                  if (node.children[0].tagName === "img") {
+                    let image = node.children[0]
+                    return (
+                      <img
+                        {...{
+                          ...image.properties,
+                          src: getStrapiURL(image.properties.src),
+                        }}
+                        className="
+                          flex w-32 h-32 rounded-full mr-5 ml-3 float-right place-content-start mt-0
+                          [shape-outside: circle(50% at 50% 50%)]
+                          "
+                      />
+                    )
+                  }
+
+                  return <p>{children}</p>
                 },
               }}
             />
