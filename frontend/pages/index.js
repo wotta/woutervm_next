@@ -14,7 +14,6 @@ const Home = ({ categories, homepage }) => {
       <Seo seo={homepage.attributes.seo} />
       <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
         <main>
-          <h1>{homepage.attributes.hero.title}</h1>
           <article>
             <ReactMarkdown
               children={content.content}
@@ -53,7 +52,6 @@ export async function getStaticProps() {
     fetchAPI("/categories", { populate: "*" }),
     fetchAPI("/homepage", {
       populate: {
-        hero: "*",
         seo: { populate: "*" },
         builder: { populate: "*" },
       },
