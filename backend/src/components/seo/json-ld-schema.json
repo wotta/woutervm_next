@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_seo_json_ld_schemas",
+  "info": {
+    "displayName": "json ld schema",
+    "icon": "file-code"
+  },
+  "options": {},
+  "attributes": {
+    "json_id_schema": {
+      "type": "text"
+    }
+  }
+}
