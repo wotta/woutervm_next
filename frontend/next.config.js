@@ -6,6 +6,7 @@ const nextConfig = {
     loader: "default",
     domains: ["localhost"],
   },
+  webpack5: true,
 }
 
 module.exports = nextConfig
