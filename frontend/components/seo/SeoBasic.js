@@ -1,11 +1,12 @@
 import Head from "next/head"
 
 const SeoBasic = ({ seo }) => {
-  if (!seo.title) return null
+  if (!seo.title && !seo.description) return null
 
   return (
     <Head>
-      <title>{seo.title}</title>
+      {seo.title && <title>{seo.title}</title>}
+      {seo.description && <meta name="description" content={seo.description} />}
     </Head>
   )
 }
