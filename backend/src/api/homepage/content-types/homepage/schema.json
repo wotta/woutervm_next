@@ -14,17 +14,6 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "seo": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.seo"
-    },
-    "hero": {
-      "type": "component",
-      "repeatable": false,
-      "component": "sections.hero",
-      "required": true
-    },
     "builder": {
       "type": "dynamiczone",
       "components": [
