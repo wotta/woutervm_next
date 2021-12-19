@@ -11,7 +11,7 @@ const componentMap = {
 const Seo = ({ seo }) => {
   const { siteName } = useContext(GlobalContext)
 
-  // Strapi has the option to setup multiple SEO blocks for the homepage
+  // Strapi has the option to set up multiple SEO blocks for the homepage
   // This takes care of that
   if (seo instanceof Array) {
     return (
