@@ -1,58 +1,49 @@
-import Head from "next/head"
 import { useContext } from "react"
 import { GlobalContext } from "../pages/_app"
 import { getStrapiMedia } from "../lib/media"
-import { convertNameToComponent } from "../lib/strapiComponent"
+import SeoBasic from "./seo/SeoBasic"
+import SeoFull from "./seo/SeoFull"
+
+const componentMap = {
+  "seo.basic": SeoBasic,
+}
 
 const Seo = ({ seo }) => {
   const { siteName } = useContext(GlobalContext)
-  const seoWithDefaults = {
-    ...seo,
+
+  // Strapi has the option to setup multiple SEO blocks for the homepage
+  // This takes care of that
+  if (seo instanceof Array) {
+    return (
+      <>
+        {seo.map((seoItem, index) => {
+          const Component = componentMap[seoItem.__component]
+
+          return <Component key={index} seo={seoItem} />
+        })}
+      </>
+    )
   }
-  // console.log(defaultSeo)
-  const fullSeo = {
-    ...seoWithDefaults,
-    // Add title suffix
-    metaTitle: `${seoWithDefaults.metaTitle} | ${siteName}`,
-    // Get full image URL
-    // shareImage: getStrapiMedia(seoWithDefaults.shareImage),
+
+  // For articles, the SEO is a single object, unfortunately typeof null is also "object"
+  // hence we check if it's a truthy value
+  if (typeof seo === "object" && Boolean(seo)) {
+    const seoWithDefaults = {
+      ...seo,
+    }
+    const fullSeo = {
+      ...seoWithDefaults,
+      // Add title suffix
+      metaTitle: `${seoWithDefaults.metaTitle} | ${siteName}`,
+      // Get full image URL
+      shareImage: getStrapiMedia(seoWithDefaults.shareImage),
+    }
+
+    return <SeoFull seo={fullSeo} />
   }
 
-  return (
-    <Head>
-      {seo.map((seo, index) => {
-        let ComponentName = convertNameToComponent(seo["__component"])
-
-        console.log(ComponentName)
-
-        return <ComponentName seo={seo} key={index} />
-      })}
-
-      {/*{fullSeo.metaTitle && (*/}
-      {/*  <>*/}
-      {/*    <title>{fullSeo.metaTitle}</title>*/}
-      {/*    <meta property="og:title" content={fullSeo.metaTitle} />*/}
-      {/*    <meta name="twitter:title" content={fullSeo.metaTitle} />*/}
-      {/*  </>*/}
-      {/*)}*/}
-      {/*{fullSeo.metaDescription && (*/}
-      {/*  <>*/}
-      {/*    <meta name="description" content={fullSeo.metaDescription} />*/}
-      {/*    <meta property="og:description" content={fullSeo.metaDescription} />*/}
-      {/*    <meta name="twitter:description" content={fullSeo.metaDescription} />*/}
-      {/*  </>*/}
-      {/*)}*/}
-      {/*{fullSeo.shareImage && (*/}
-      {/*  <>*/}
-      {/*    <meta property="og:image" content={fullSeo.shareImage} />*/}
-      {/*    <meta name="twitter:image" content={fullSeo.shareImage} />*/}
-      {/*    <meta name="image" content={fullSeo.shareImage} />*/}
-      {/*  </>*/}
-      {/*)}*/}
-      {/*{fullSeo.article && <meta property="og:type" content="article" />}*/}
-      {/*<meta name="twitter:card" content="summary_large_image" />*/}
-    </Head>
-  )
+  // If it's not an array or an object, we don't know what to do. Yet.
+  return null
 }
 
 export default Seo

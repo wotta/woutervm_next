@@ -1,13 +1,12 @@
+import Head from "next/head"
+
 const SeoBasic = ({ seo }) => {
-  console.log(seo)
+  if (!seo.title) return null
+
   return (
-    <>
-      {seo.title && (
-        <>
-          <title>{seo.title}</title>
-        </>
-      )}
-    </>
+    <Head>
+      <title>{seo.title}</title>
+    </Head>
   )
 }
 
