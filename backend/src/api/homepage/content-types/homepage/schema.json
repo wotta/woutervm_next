@@ -19,6 +19,16 @@
       "components": [
         "builder.content"
       ]
+    },
+    "seo": {
+      "type": "dynamiczone",
+      "components": [
+        "seo.basic",
+        "seo.advanced",
+        "seo.open-graph",
+        "seo.sitemap",
+        "seo.json-ld-schema"
+      ]
     }
   }
 }
