@@ -37,9 +37,6 @@ MyApp.getInitialProps = async (ctx) => {
   const globalRes = await fetchAPI("/global", {
     populate: {
       favicon: "*",
-      defaultSeo: {
-        populate: "*",
-      },
     },
   })
   // Pass the data to our page via props
