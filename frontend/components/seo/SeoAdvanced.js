@@ -7,7 +7,20 @@ const SeoAdvanced = ({ seo }) => {
     no_follow: "nofollow",
   }
 
-  let robotOptions = Str("")
+  let robotOptions = getRobotOptions(seo, options)
+
+  let canonical = getCanonical(seo)
+
+  return (
+    <Head>
+      {robotOptions && <meta name="robots" content={robotOptions} />}
+      {canonical && <link rel="canonical" href={canonical} />}
+    </Head>
+  )
+}
+
+const getRobotOptions = (seo, options) => {
+  return Str("")
     .when(seo.no_index, (string) => {
       return string.concat(options.no_index, ",")
     })
@@ -15,14 +28,20 @@ const SeoAdvanced = ({ seo }) => {
       return string.concat(options.no_index, ",")
     })
     .removeLast(1)
+}
 
-  console.log(robotOptions)
-
-  return (
-    <Head>
-      {robotOptions && <meta name="robots" content={robotOptions} />}
-    </Head>
-  )
+const getCanonical = (seo) => {
+  return Str("")
+    .when(seo.canonical === "current", (string) => {
+      return string.concat(seo.canonical, ",")
+    })
+    .when(seo.canonical === "external", (string) => {
+      return string.concat(seo.canonical, ",")
+    })
+    .when(seo.canonical === "entry", (string) => {
+      return string.concat(seo.canonical, ",")
+    })
+    .removeLast(1)
 }
 
 export default SeoAdvanced
