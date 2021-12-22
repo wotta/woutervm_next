@@ -3,7 +3,7 @@ import { GlobalContext } from "../pages/_app"
 import { getStrapiMedia } from "../lib/media"
 import SeoBasic from "./seo/SeoBasic"
 import SeoFull from "./seo/SeoFull"
-import SeoAdvanced from "./seo/advanced"
+import SeoAdvanced from "./seo/SeoAdvanced"
 
 const componentMap = {
   "seo.basic": SeoBasic,
