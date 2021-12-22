@@ -13,6 +13,8 @@ const Route = () => {
     isCurrent: (path) => {
       return asPath === path
     },
+
+    current: () => asPath,
   }
 }
 

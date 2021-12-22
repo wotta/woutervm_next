@@ -23,6 +23,9 @@
         "external"
       ],
       "default": "current"
+    },
+    "url": {
+      "type": "string"
     }
   }
 }

@@ -1,5 +1,6 @@
 import Head from "next/head"
 import Str from "../../lib/str"
+import Route from "../../lib/route"
 
 const SeoAdvanced = ({ seo }) => {
   const options = {
@@ -32,16 +33,16 @@ const getRobotOptions = (seo, options) => {
 
 const getCanonical = (seo) => {
   return Str("")
-    .when(seo.canonical === "current", (string) => {
+    .when(seo.canonical_url === "current", (string) => {
+      return Route().current()
+    })
+    .when(seo.canonical_url === "external" && seo.url, (string) => {
+      return seo.url
+    })
+    .when(seo.canonical_url === "entry", (string) => {
       return string.concat(seo.canonical, ",")
     })
-    .when(seo.canonical === "external", (string) => {
-      return string.concat(seo.canonical, ",")
-    })
-    .when(seo.canonical === "entry", (string) => {
-      return string.concat(seo.canonical, ",")
-    })
-    .removeLast(1)
+    .value()
 }
 
 export default SeoAdvanced

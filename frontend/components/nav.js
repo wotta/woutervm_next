@@ -85,7 +85,6 @@ const Nav = ({ navigation }) => {
           <ul className="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
             {navigation.map((item) => {
               let current = Route().isCurrent(item.url)
-              console.log(item.blank)
               return (
                 <li className="mr-3" key={item.id}>
                   <Link href={item.url}>
