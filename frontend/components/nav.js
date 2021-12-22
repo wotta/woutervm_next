@@ -1,6 +1,6 @@
 import React from "react"
 import Link from "next/link"
-import { isCurrent } from "../lib/isCurrent"
+import Route from "../lib/route"
 import { useState, useEffect, useRef } from "react"
 
 const Nav = ({ categories }) => {
@@ -84,7 +84,9 @@ const Nav = ({ categories }) => {
         >
           <ul className="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
             {categories.map((category) => {
-              let current = isCurrent(`/category/${category.attributes.slug}`)
+              let current = Route().isCurrent(
+                `/category/${category.attributes.slug}`
+              )
               return (
                 <li className="mr-3" key={category.id}>
                   <Link href={`/category/${category.attributes.slug}`}>
