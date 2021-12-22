@@ -3,7 +3,7 @@ import Link from "next/link"
 import Route from "../lib/route"
 import { useState, useEffect, useRef } from "react"
 
-const Nav = ({ categories }) => {
+const Nav = ({ navigation }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
 
@@ -83,21 +83,21 @@ const Nav = ({ categories }) => {
           ref={menuRef}
         >
           <ul className="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
-            {categories.map((category) => {
-              let current = Route().isCurrent(
-                `/category/${category.attributes.slug}`
-              )
+            {navigation.map((item) => {
+              let current = Route().isCurrent(item.url)
+              console.log(item.blank)
               return (
-                <li className="mr-3" key={category.id}>
-                  <Link href={`/category/${category.attributes.slug}`}>
+                <li className="mr-3" key={item.id}>
+                  <Link href={item.url}>
                     <a
                       className={`inline-block py-2 px-4 no-underline text-xl ${
                         current
                           ? "text-pink-600 font-medium"
                           : "text-gray-600 hover:text-pink-600 hover:text-underline"
                       }`}
+                      target={item.blank ? "_blank" : "_self"}
                     >
-                      {category.attributes.name}
+                      {item.name}
                     </a>
                   </Link>
                 </li>

@@ -4,13 +4,13 @@ import { fetchAPI, getStrapiURL } from "../lib/api"
 import Layout from "../components/layout"
 import ReactMarkdown from "react-markdown"
 
-const Home = ({ categories, homepage }) => {
+const Home = ({ navigation, homepage }) => {
   let content = homepage.attributes.builder.find(
     (item) => item.__component === "builder.content"
   )
 
   return (
-    <Layout categories={categories}>
+    <Layout navigation={navigation}>
       <Seo seo={homepage.attributes.seo} />
       <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
         <main>
@@ -48,8 +48,8 @@ const Home = ({ categories, homepage }) => {
 
 export async function getStaticProps() {
   // Run API calls in parallel
-  const [categoriesRes, homepageRes] = await Promise.all([
-    fetchAPI("/categories", { populate: "*" }),
+  const [navigationRes, homepageRes] = await Promise.all([
+    fetchAPI("/navigation", { populate: "*" }),
     fetchAPI("/homepage", {
       populate: {
         seo: { populate: "*" },
@@ -60,7 +60,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      categories: categoriesRes.data,
+      navigation: navigationRes.data.attributes.items,
       homepage: homepageRes.data,
     },
     revalidate: 1,
