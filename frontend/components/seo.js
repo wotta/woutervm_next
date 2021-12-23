@@ -4,10 +4,12 @@ import { getStrapiMedia } from "../lib/media"
 import SeoBasic from "./seo/SeoBasic"
 import SeoFull from "./seo/SeoFull"
 import SeoAdvanced from "./seo/SeoAdvanced"
+import SeoOpenGraph from "./seo/SeoOpenGraph"
 
 const componentMap = {
   "seo.basic": SeoBasic,
   "seo.advanced": SeoAdvanced,
+  "seo.open-graph": SeoOpenGraph,
 }
 
 const Seo = ({ seo }) => {
