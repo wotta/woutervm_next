@@ -2,12 +2,34 @@
   "collectionName": "components_seo_json_ld_schemas",
   "info": {
     "displayName": "json ld schema",
-    "icon": "file-code"
+    "icon": "file-code",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "json_id_schema": {
-      "type": "text"
+    "name": {
+      "type": "string"
+    },
+    "custom": {
+      "type": "json"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "none",
+        "org",
+        "person",
+        "custom"
+      ]
     }
   }
 }
