@@ -22,26 +22,16 @@ const SeoAdvanced = ({ seo }) => {
 
 const getRobotOptions = (seo, options) => {
   return Str("")
-    .when(seo.no_index, (string) => {
-      return string.concat(options.no_index, ",")
-    })
-    .when(seo.no_follow, (string) => {
-      return string.concat(options.no_index, ",")
-    })
+    .when(seo.no_index, (string) => string.concat(options.no_index, ","))
+    .when(seo.no_follow, (string) => string.concat(options.no_follow, ","))
     .removeLast(1)
 }
 
 const getCanonical = (seo) => {
   return Str("")
-    .when(seo.canonical_url === "current", (string) => {
-      return Route().current()
-    })
-    .when(seo.canonical_url === "external" && seo.url, (string) => {
-      return seo.url
-    })
-    .when(seo.canonical_url === "entry", (string) => {
-      return string.concat(seo.canonical, ",")
-    })
+    .when(seo.canonical_url === "current", () => Route().current())
+    .when(seo.canonical_url === "external" && seo.url, () => seo.url)
+    .when(seo.canonical_url === "entry", () => Route().current())
     .value()
 }
 
