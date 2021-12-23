@@ -5,11 +5,13 @@ import SeoBasic from "./seo/SeoBasic"
 import SeoFull from "./seo/SeoFull"
 import SeoAdvanced from "./seo/SeoAdvanced"
 import SeoOpenGraph from "./seo/SeoOpenGraph"
+import SeoJsonSchema from "./seo/SeoJsonSchema"
 
 const componentMap = {
   "seo.basic": SeoBasic,
   "seo.advanced": SeoAdvanced,
   "seo.open-graph": SeoOpenGraph,
+  "seo.json-ld-schema": SeoJsonSchema,
 }
 
 const Seo = ({ seo }) => {
