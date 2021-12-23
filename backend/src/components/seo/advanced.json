@@ -19,8 +19,8 @@
       "type": "enumeration",
       "enum": [
         "current",
-        "domain",
-        "external"
+        "external",
+        "entry"
       ],
       "default": "current"
     },
