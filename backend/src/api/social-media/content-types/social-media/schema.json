@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "social_medias",
+  "info": {
+    "singularName": "social-media",
+    "pluralName": "social-medias",
+    "displayName": "social media",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "social_media": {
+      "type": "dynamiczone",
+      "components": [
+        "social.link"
+      ]
+    }
+  }
+}
