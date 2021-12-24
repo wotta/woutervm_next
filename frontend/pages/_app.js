@@ -9,7 +9,11 @@ import { getStrapiMedia } from "../lib/media"
 export const GlobalContext = createContext({})
 
 const MyApp = ({ Component, pageProps }) => {
-  const { global } = pageProps
+  const { global, navigation } = pageProps
+  const combinedProps = {
+    ...global.attributes,
+    navigation,
+  }
 
   return (
     <>
@@ -19,7 +23,7 @@ const MyApp = ({ Component, pageProps }) => {
           href={getStrapiMedia(global.attributes.favicon)}
         />
       </Head>
-      <GlobalContext.Provider value={global.attributes}>
+      <GlobalContext.Provider value={combinedProps}>
         <Component {...pageProps} />
       </GlobalContext.Provider>
     </>
@@ -34,13 +38,22 @@ MyApp.getInitialProps = async (ctx) => {
   // Calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(ctx)
   // Fetch global site settings from Strapi
-  const globalRes = await fetchAPI("/global", {
-    populate: {
-      favicon: "*",
-    },
-  })
+  const [globalRes, navigationRes] = await Promise.all([
+    fetchAPI("/global", {
+      populate: {
+        favicon: "*",
+      },
+    }),
+    fetchAPI("/navigation", { populate: "*" }),
+  ])
   // Pass the data to our page via props
-  return { ...appProps, pageProps: { global: globalRes.data } }
+  return {
+    ...appProps,
+    pageProps: {
+      global: globalRes.data,
+      navigation: navigationRes.data.attributes.items,
+    },
+  }
 }
 
 export default MyApp
