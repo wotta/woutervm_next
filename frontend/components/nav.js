@@ -83,25 +83,27 @@ const Nav = ({ navigation }) => {
           ref={menuRef}
         >
           <ul className="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
-            {navigation.map((item) => {
-              let current = Route().isCurrent(item.url)
-              return (
-                <li className="mr-3" key={item.id}>
-                  <Link href={item.url}>
-                    <a
-                      className={`inline-block py-2 px-4 no-underline text-xl ${
-                        current
-                          ? "text-pink-600 font-medium"
-                          : "text-gray-600 hover:text-pink-600 hover:text-underline"
-                      }`}
-                      target={item.blank ? "_blank" : "_self"}
-                    >
-                      {item.name}
-                    </a>
-                  </Link>
-                </li>
-              )
-            })}
+            {navigation
+              .filter((item) => item.display)
+              .map((item) => {
+                let current = Route().isCurrent(item.url)
+                return (
+                  <li className="mr-3" key={item.id}>
+                    <Link href={item.url}>
+                      <a
+                        className={`inline-block py-2 px-4 no-underline text-xl ${
+                          current
+                            ? "text-pink-600 font-medium"
+                            : "text-gray-600 hover:text-pink-600 hover:text-underline"
+                        }`}
+                        target={item.blank ? "_blank" : "_self"}
+                      >
+                        {item.name}
+                      </a>
+                    </Link>
+                  </li>
+                )
+              })}
           </ul>
         </div>
       </nav>
