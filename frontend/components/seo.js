@@ -19,7 +19,7 @@ const Seo = ({ seo }) => {
 
   // Strapi has the option to set up multiple SEO blocks for the homepage
   // This takes care of that
-  if (seo instanceof Array) {
+  if (seo instanceof Array && seo.length > 0) {
     return (
       <>
         {seo.map((seoItem, index) => {
@@ -40,9 +40,7 @@ const Seo = ({ seo }) => {
     const fullSeo = {
       ...seoWithDefaults,
       // Add title suffix
-      metaTitle: `${seoWithDefaults.metaTitle} | ${siteName}`,
-      // Get full image URL
-      shareImage: getStrapiMedia(seoWithDefaults.shareImage),
+      metaTitle: siteName,
     }
 
     return <SeoFull seo={fullSeo} />
