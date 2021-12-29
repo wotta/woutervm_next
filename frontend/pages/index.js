@@ -1,16 +1,14 @@
 import React from "react"
+import Image from "next/image"
 import Seo from "../components/seo"
-import { fetchAPI, getStrapiURL } from "../lib/api"
 import Layout from "../components/layout"
 import ReactMarkdown from "react-markdown"
-import MarkdownComponents from "../components/MarkdownComponents"
+import { fetchAPI, getStrapiURL } from "../lib/api"
 
 const Home = ({ navigation, homepage }) => {
   let content = homepage.attributes.builder.find(
     (item) => item.__component === "builder.content"
   )
-
-  const markdownComponents = MarkdownComponents
 
   return (
     <Layout navigation={navigation}>
@@ -18,7 +16,31 @@ const Home = ({ navigation, homepage }) => {
       <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
         <main>
           <article>
-            <ReactMarkdown components={markdownComponents}>
+            <ReactMarkdown
+              components={{
+                p: function p({ node, children }) {
+                  if (node.children[0].tagName === "img") {
+                    let image = node.children[0]
+
+                    let imageProps = {
+                      ...image.properties,
+                    }
+
+                    return (
+                      <img
+                        {...imageProps}
+                        className="
+          flex w-32 h-32 rounded-full mr-5 ml-3 float-right place-content-start mt-0 overflow-hidden
+          [shape-outside: circle(50% at 50% 50%)]
+        "
+                      />
+                    )
+                  }
+
+                  return <p>{children}</p>
+                },
+              }}
+            >
               {content.content}
             </ReactMarkdown>
           </article>

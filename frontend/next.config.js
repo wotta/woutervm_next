@@ -1,14 +1,16 @@
 /**
  * @type {import('next').NextConfig}
  */
+const withPlugins = require("next-compose-plugins")
 const withImages = require("next-images")
 
-const nextConfig = withImages({
+const nextConfig = {
   images: {
-    loader: "default",
+    loader: "imgix",
     domains: ["localhost"],
   },
   webpack5: true,
-})
+  basePath: "/v2",
+}
 
-module.exports = nextConfig
+module.exports = withPlugins([[withImages]], nextConfig)
