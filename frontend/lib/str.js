@@ -41,6 +41,14 @@ const Str = (str) => {
       return str.substring(0, str.length - n)
     },
 
+    endsWith: (suffix) => {
+      return str.indexOf(suffix, str.length - suffix.length) !== -1
+    },
+
+    append: (suffix) => {
+      return Str(str + suffix)
+    },
+
     when: (condition, callback, defaultReturn = null) => {
       if (condition) {
         str = callback instanceof Function ? callback(str) : str
