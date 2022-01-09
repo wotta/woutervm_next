@@ -27,13 +27,14 @@ const Home = ({ navigation, homepage }) => {
                     }
 
                     return (
-                      <img
-                        {...imageProps}
+                      <div
                         className="
           flex w-32 h-32 rounded-full mr-5 ml-3 float-right place-content-start mt-0 overflow-hidden
           [shape-outside: circle(50% at 50% 50%)]
         "
-                      />
+                      >
+                        <Image {...imageProps} width={200} height={200} />
+                      </div>
                     )
                   }
 
