@@ -10,7 +10,6 @@ const nextConfig = {
     domains: ["localhost"],
   },
   webpack5: true,
-  basePath: "/v2",
 }
 
 module.exports = withPlugins([[withImages]], nextConfig)
