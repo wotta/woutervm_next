@@ -6,8 +6,9 @@ const withImages = require("next-images")
 
 const nextConfig = {
   images: {
-    loader: "imgix",
-    domains: ["localhost"],
+    loader: "default",
+    domains: ["localhost", "res.cloudinary.com"],
+    path: "/_next/image",
   },
   webpack5: true,
 }
