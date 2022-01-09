@@ -11,7 +11,7 @@ const SeoJsonOrgSchema = ({ seo }) => {
   }
 
   if (seo.logo) {
-    orgData.logo = getStrapiMedia(seo.logo)
+    orgData.logo = getStrapiMedia(seo.logo, "json org schema logo")
   }
 
   return (

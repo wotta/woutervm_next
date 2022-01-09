@@ -6,6 +6,7 @@ import { getStrapiMedia } from "../../lib/media"
 
 const TwitterOpenGraph = ({ seo }) => {
   const { twitterUsername } = useContext(GlobalContext)
+  console.log(seo)
 
   let twitterHandle = Str(twitterUsername)
     .when(twitterUsername.charAt(0) === "@", () => twitterUsername.substr(1))
@@ -30,15 +31,15 @@ const TwitterOpenGraph = ({ seo }) => {
         </>
       )}
 
-      {seo.twitter_image && (
+      {seo.twitter_image?.data && (
         <meta
           property="twitter:image"
-          content={getStrapiMedia(seo.twitter_image)}
+          content={getStrapiMedia(seo.twitter_image, "twitter_image")}
         />
       )}
 
       {seo.twitter_image &&
-        seo.twitter_image.data.attributes.alternativeText && (
+        seo.twitter_image.data?.attributes?.alternativeText && (
           <meta
             property="twitter:image:alt"
             content={seo.twitter_image.data.attributes.alternativeText}
