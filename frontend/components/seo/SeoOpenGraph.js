@@ -12,7 +12,7 @@ const SeoOpenGraph = ({ seo }) => {
         {seo.social_description && (
           <meta property="og:description" content={seo.social_description} />
         )}
-        {seo.social_image && (
+        {seo.social_image?.data && (
           <meta
             property="og:image"
             content={getStrapiMedia(seo.social_image, "Social Image")}
