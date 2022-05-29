@@ -3,30 +3,34 @@ import { fetchAPI } from "@/lib/api"
 import React, { useContext } from "react"
 import Layout from "@/components/layout"
 import ReactMarkdown from "react-markdown"
-import { useRouter } from "next/router"
 import { GlobalContext } from "@/pages/_app"
 import BlogMapper from "@/mappers/BlogMapper"
+import remarkGfm from "remark-gfm"
 
 const BlogPage = ({ blog }) => {
   const { navigation } = useContext(GlobalContext)
-  const router = useRouter()
-
-  if (router.isFallback) {
-    return <div>Loading blog...</div>
-  }
 
   blog = new BlogMapper(blog)
 
   return (
     <Layout navigation={navigation}>
-      {blog.attributes?.seo ? <Seo seo={blog.attributes.seo} /> : null}
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <h1>{blog.getTitle()}</h1>
-            <p>{blog.getContent()}</p>
-          </div>
-        </div>
+      <Seo seo={blog.getSeo()} />
+      <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
+        <main>
+          <h1>{blog.getTitle()}</h1>
+          <article>
+            {blog.getContent().map((_content) => {
+              return (
+                <div key={_content.id}>
+                  <ReactMarkdown
+                    children={_content.content}
+                    // remarkPlugins={[remarkGfm]}
+                  />
+                </div>
+              )
+            })}
+          </article>
+        </main>
       </div>
     </Layout>
   )
