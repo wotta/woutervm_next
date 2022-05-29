@@ -16,6 +16,10 @@ class BlogMapper {
   getSlug() {
     return this.attributes.slug
   }
+
+  getContent() {
+    return this.attributes.content
+  }
 }
 
 export default BlogMapper
