@@ -1,13 +1,11 @@
-import { fetchAPI } from "../lib/api"
-import { GlobalContext } from "./_app"
-import Layout from "../components/layout"
+import { fetchAPI } from "@/lib/api"
+import Layout from "@/components/layout"
 import React, { useContext } from "react"
-import BlogMapper from "../mappers/BlogMapper"
+import { GlobalContext } from "@/pages/_app"
+import BlogMapper from "@/mappers/BlogMapper"
 
 const BlogIndex = ({ blogs }) => {
   const { navigation } = useContext(GlobalContext)
-
-  console.log(blogs)
 
   return (
     <Layout navigation={navigation}>
@@ -28,7 +26,7 @@ const BlogIndex = ({ blogs }) => {
               <div key={blog.getId()}>
                 <h2>{blog.getTitle()}</h2>
                 <p>
-                  <a href={blog.getSlug()}>Read more</a>
+                  <a href={`blog/${blog.getSlug()}`}>Read more</a>
                 </p>
               </div>
             )
