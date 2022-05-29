@@ -18,7 +18,13 @@ class BlogMapper {
   }
 
   getContent() {
-    return this.attributes.content
+    return this.attributes.builder.filter(
+      (item) => item.__component === "builder.content"
+    )
+  }
+
+  getSeo() {
+    return this.attributes.seo
   }
 }
 
