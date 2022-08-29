@@ -1,3 +1,5 @@
+import { format } from "date-fns"
+
 class BlogMapper {
   constructor(blog) {
     this.blog = blog
@@ -25,6 +27,14 @@ class BlogMapper {
 
   getSeo() {
     return this.attributes.seo
+  }
+
+  getFormattedDate() {
+    return format(new Date(this.attributes.publishedAt), "MMMM dd, yyyy")
+  }
+
+  getDateTime() {
+    return this.attributes.publishedAt
   }
 }
 
