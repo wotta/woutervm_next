@@ -1,3 +1,4 @@
+import Link from "next/link"
 import Seo from "@/components/seo"
 import { fetchAPI } from "@/lib/api"
 import Layout from "@/components/layout"
@@ -16,12 +17,18 @@ const BlogPage = ({ blog }) => {
       <Seo seo={blog.getSeo()} />
       <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
         <main>
-          <time
-            className="text-base muted font-normal"
-            dateTime={blog.getDateTime()}
-          >
-            {blog.getFormattedDate()}
-          </time>
+          <p>
+            <Link href="/blog">
+              <a>&larr; blog overview</a>
+            </Link>
+
+            <time
+              className="ml-1 text-base muted font-normal"
+              dateTime={blog.getDateTime()}
+            >
+              {blog.getFormattedDate()}
+            </time>
+          </p>
           <h1>{blog.getTitle()}</h1>
           <article>
             {blog.getContent().map((_content) => {
