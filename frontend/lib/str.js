@@ -37,6 +37,12 @@ const Str = (str) => {
       return str.length > 0
     },
 
+    removeFirst: (n) => {
+      let locator = str.indexOf(n)
+
+      return Str(str.substring(0, locator) + str.substring(locator + 1))
+    },
+
     removeLast: (n) => {
       return str.substring(0, str.length - n)
     },

@@ -7,11 +7,12 @@
     "develop:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend develop",
     "dev": "$npm_execpath run develop",
     "develop": "cross-env FORCE_COLOR=1 npm-run-all -l -p develop:*",
-    "install": "yarn --cwd backend install && yarn --cwd frontend install"
+    "install": "yarn --cwd backend install && yarn --cwd frontend install && yarn --cwd frontend; npx --yes browserslist@latest --update-db"
   },
   "devDependencies": {
+    "cross-env": "7.0.3",
     "npm-run-all": "4.1.5",
-    "wait-on": "5.2.1",
-    "cross-env": "7.0.3"
-  }
+    "wait-on": "5.2.1"
+  },
+  "dependencies": {}
 }
