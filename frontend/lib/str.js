@@ -37,7 +37,7 @@ const Str = (str) => {
       return str.length > 0
     },
 
-    removeLast: (n) => {
+    removeLast: (n = 1) => {
       return str.substring(0, str.length - n)
     },
 
