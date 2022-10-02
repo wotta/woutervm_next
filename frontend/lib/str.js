@@ -43,7 +43,7 @@ const Str = (str) => {
       return Str(str.substring(0, locator) + str.substring(locator + 1))
     },
 
-    removeLast: (n) => {
+    removeLast: (n = 1) => {
       return str.substring(0, str.length - n)
     },
 
