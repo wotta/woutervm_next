@@ -1,9 +1,9 @@
 import React from "react"
 import Image from "next/image"
-import Seo from "../components/seo"
-import Layout from "../components/layout"
+import Seo from "@/components/seo"
+import Layout from "@/components/layout"
 import ReactMarkdown from "react-markdown"
-import { fetchAPI, getStrapiURL } from "../lib/api"
+import { fetchAPI } from "@/lib/api"
 
 const Home = ({ navigation, homepage }) => {
   let content = homepage.attributes.builder.find(
