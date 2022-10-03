@@ -10,7 +10,6 @@ const nextConfig = {
     domains: ["localhost", "res.cloudinary.com"],
     path: "/_next/image",
   },
-  webpack5: true,
 }
 
 module.exports = withPlugins([[withImages]], nextConfig)
