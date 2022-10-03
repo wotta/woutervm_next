@@ -6,6 +6,7 @@
     "develop:backend": "yarn --cwd backend develop",
     "develop:frontend": "wait-on http://localhost:1337/admin && yarn --cwd frontend develop",
     "dev": "$npm_execpath run develop",
+    "build": "yarn --cwd frontend build",
     "develop": "cross-env FORCE_COLOR=1 npm-run-all -l -p develop:*",
     "install": "yarn --cwd backend install && yarn --cwd frontend install && yarn --cwd frontend; npx --yes browserslist@latest --update-db"
   },
