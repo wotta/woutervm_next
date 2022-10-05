@@ -5,6 +5,7 @@
     "@strapi/plugin-users-permissions": "^4.3.3",
     "@strapi/provider-upload-cloudinary": "^4.3.3",
     "@strapi/strapi": "^4.3.3",
+    "better-sqlite3": "7.4.6",
     "lodash.set": "^4.3.2",
     "mime-types": "^2.1.27",
     "pg": "^8.7.1",
