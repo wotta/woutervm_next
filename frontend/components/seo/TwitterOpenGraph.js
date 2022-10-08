@@ -1,12 +1,11 @@
 import Head from "next/head"
 import Str from "../../lib/str"
 import { useContext } from "react"
-import { GlobalContext } from "../../pages/_app"
-import { getStrapiMedia } from "../../lib/media"
+import { GlobalContext } from "@/pages/_app"
+import { getStrapiMedia } from "@/lib/media"
 
 const TwitterOpenGraph = ({ seo }) => {
   const { twitterUsername } = useContext(GlobalContext)
-  console.log(seo)
 
   let twitterHandle = Str(twitterUsername)
     .when(twitterUsername.charAt(0) === "@", () => twitterUsername.substr(1))
