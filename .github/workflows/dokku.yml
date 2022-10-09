@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - feature/auto-deploy-dokku-52
 
 jobs:
   deploy:
