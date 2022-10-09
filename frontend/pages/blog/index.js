@@ -39,7 +39,8 @@ const BlogIndex = ({ blogs }) => {
 
 export async function getStaticProps() {
   const blogsRes = await fetchAPI("/blogs", {
-    fields: ["title", "slug"],
+    fields: ["title", "slug", "createdAt"],
+    sort: "createdAt:desc",
   })
 
   return {

@@ -6,6 +6,7 @@ import React, { useContext } from "react"
 import ReactMarkdown from "react-markdown"
 import { GlobalContext } from "@/pages/_app"
 import BlogMapper from "@/mappers/BlogMapper"
+import CustomLink from "@/components/Markdown/CustomLink"
 
 const BlogPage = ({ blog }) => {
   const { navigation } = useContext(GlobalContext)
@@ -34,7 +35,9 @@ const BlogPage = ({ blog }) => {
             {blog.getContent().map((_content) => {
               return (
                 <div key={_content.id}>
-                  <ReactMarkdown>{_content.content}</ReactMarkdown>
+                  <ReactMarkdown components={{ a: CustomLink }}>
+                    {_content.content}
+                  </ReactMarkdown>
                 </div>
               )
             })}
