@@ -4,9 +4,25 @@ const Str = (str) => {
       return str.split(delimiter)
     },
 
+    before: (key) => {
+      return str.valueOf().substring(0, str.indexOf(key))
+    },
+
+    beforeLast: (key) => {
+      return str.valueOf().substring(0, str.lastIndexOf(key))
+    },
+
     after: (key) => {
       let location = str.indexOf(key)
       return str.valueOf().substring(location + key.length)
+    },
+
+    between: (from, to) => {
+      if (from === "" || to === "") {
+        return Str(str)
+      }
+
+      return Str(Str(str).after(from)).beforeLast(to)
     },
 
     trim: () => {
