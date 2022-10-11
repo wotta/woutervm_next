@@ -22,8 +22,7 @@ jobs:
           fetch-depth: 0 # This is required, or you might get an error from Dokku
 
       - name: Push to dokku
-        uses: obrassard/action-dokku-deploy@v1.0.2
+        uses: dokku/github-action@master
         with:
-          dokku_repo: ${{ secrets.DOKKU_REPO }}
-          ssh_key: ${{ secrets.SSH_KEY }}
-          deploy_branch: 'develop'
+          git_remote_url: ${{ secrets.DOKKU_REPO }}
+          ssh_private_key: ${{ secrets.SSH_KEY }}
