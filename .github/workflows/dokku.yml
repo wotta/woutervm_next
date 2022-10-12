@@ -16,9 +16,8 @@ jobs:
           fetch-depth: 0
 
       - name: Push to dokku
-        uses: dokku/github-action@master
+        uses: obrassard/action-dokku-deploy@v1.0.2
         with:
-          branch: 'main'
-          git_push_flags: '--force'
+          deploy_branch: 'main'
           git_remote_url: ${{ secrets.DOKKU_REPO }}
           ssh_private_key: ${{ secrets.SSH_KEY }}
