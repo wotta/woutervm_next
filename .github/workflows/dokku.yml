@@ -19,5 +19,5 @@ jobs:
         uses: obrassard/action-dokku-deploy@v1.0.2
         with:
           deploy_branch: 'main'
-          git_remote_url: ${{ secrets.DOKKU_REPO }}
+          dokku_repo: ${{ secrets.DOKKU_REPO }}
           ssh_private_key: ${{ secrets.SSH_KEY }}
