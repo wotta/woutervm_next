@@ -19,6 +19,6 @@ jobs:
         remote-branch: 'main'
         app-name: 'woutervm'
         dokku-user: 'woutervm_deploy'
-        dokku-host: '81.169.175.44'
+        dokku-host: 'jordyvandomselaar.com'
         git_push_flags: '--force'
         ssh_private_key: ${{ secrets.SSH_KEY }}
