@@ -20,4 +20,4 @@ jobs:
         with:
           deploy_branch: 'main'
           dokku_repo: ${{ secrets.DOKKU_REPO }}
-          ssh_private_key: ${{ secrets.SSH_KEY }}
+          ssh_key: ${{ secrets.SSH_KEY }}
