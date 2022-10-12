@@ -25,5 +25,4 @@ jobs:
         uses: dokku/github-action@master
         with:
           git_remote_url: ${{ secrets.DOKKU_REPO }}
-          ssh_host_key: ${{ secrets.SSH_HOST_KEY }}
           ssh_private_key: ${{ secrets.SSH_KEY }}
