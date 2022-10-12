@@ -18,6 +18,7 @@ jobs:
       - name: Push to dokku
         uses: idoberko2/dokku-deploy-github-action@v1
         with:
+          dokku-user: 'woutervm_deploy'
           dokku-host: '81.169.175.44'
           app-name: 'woutervm'
           git_push_flags: '--force'
