@@ -16,6 +16,7 @@ jobs:
     - name: Push to dokku
       uses: idoberko2/dokku-deploy-github-action@v1
       with:
+        app-name: 'woutervm'
         remote-branch: 'main'
         dokku-user: 'woutervm_deploy'
         dokku-host: 'jordyvandomselaar.dev'
