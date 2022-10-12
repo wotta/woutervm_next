@@ -20,5 +20,6 @@ jobs:
         app-name: 'woutervm'
         dokku-user: 'woutervm_deploy'
         dokku-host: 'jordyvandomselaar.com'
-        git_push_flags: '--force'
-        ssh_private_key: ${{ secrets.SSH_KEY }}
+        ssh-private-key: ${{ secrets.SSH_KEY }}
+#        git_push_flags: '--force'
+#        ssh_private_key: ${{ secrets.SSH_KEY }}
