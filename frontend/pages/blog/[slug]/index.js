@@ -53,7 +53,10 @@ export async function getStaticProps({ params }) {
     filters: {
       slug: { $eq: params.slug },
     },
-    populate: "*",
+    populate: {
+      seo: { populate: "*" },
+      builder: { populate: "*" },
+    },
   })
 
   return {
