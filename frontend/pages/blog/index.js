@@ -1,3 +1,4 @@
+import Head from "next/head"
 import { fetchAPI } from "@/lib/api"
 import Layout from "@/components/layout"
 import React, { useContext } from "react"
@@ -9,11 +10,18 @@ const BlogIndex = ({ blogs }) => {
 
   return (
     <Layout navigation={navigation}>
+      <Head>
+        <title>Read more about things that interest me</title>
+        <meta
+          name="description"
+          content="You can find posts about things that I find interesting or want to share my experience about."
+        />
+      </Head>
       <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
         <main>
           <h1>Blogs</h1>
           <p>
-            You can find posts about things that I find interesting or wanted to
+            You can find posts about things that I find interesting or want to
             share my experience about.
           </p>
 
