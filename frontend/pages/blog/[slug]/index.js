@@ -20,7 +20,7 @@ const BlogPage = ({ blog }) => {
         <main>
           <p>
             <Link href="/blog">
-              <a>&larr; blog overview</a>
+              &larr; blog overview
             </Link>
 
             <time
@@ -45,7 +45,7 @@ const BlogPage = ({ blog }) => {
         </main>
       </div>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps({ params }) {
