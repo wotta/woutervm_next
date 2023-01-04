@@ -19,9 +19,7 @@ const BlogPage = ({ blog }) => {
       <div className="container mt-24 md:mt-18 p-8 rounded prose prose-pink prose-sm sm:prose-lg lg:prose-lg xl:prose-2xl mx-auto">
         <main>
           <p>
-            <Link href="/blog">
-              <a>&larr; blog overview</a>
-            </Link>
+            <Link href="/blog">&larr; blog overview</Link>
 
             <time
               className="ml-1 text-base muted font-normal"

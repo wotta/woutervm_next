@@ -26,14 +26,16 @@ const Home = ({ navigation, homepage }) => {
                       ...image.properties,
                     }
 
+                    console.log(imageProps)
+
                     return (
-                      <div
-                        className="
-          flex w-32 h-32 rounded-full mr-5 ml-3 float-right place-content-start mt-0 overflow-hidden
-          [shape-outside: circle(50% at 50% 50%)]
-        "
-                      >
-                        <Image {...imageProps} width={200} height={200} />
+                      <div className="flex rounded-full mr-5 ml-3 float-right place-content-start mt-0 overflow-hidden">
+                        <Image
+                          {...imageProps}
+                          width={128}
+                          height={128}
+                          className="rounded-full"
+                        />
                       </div>
                     )
                   }

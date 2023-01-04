@@ -40,12 +40,13 @@ const Nav = ({ navigation }) => {
         }`}
       >
         <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <Link href="/">
-            <a className="text-white no-underline hover:text-white hover:no-underline">
-              <span className="bg-clip-text text-transparent bg-gradient-to-b from-pink-600 to-purple-600 text-5xl font-black motion-safe:animate-pulse">
-                <i className="em em-grinning" /> Wotta
-              </span>
-            </a>
+          <Link
+            href="/"
+            className="text-white no-underline hover:text-white hover:no-underline"
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-b from-pink-600 to-purple-600 text-5xl font-black motion-safe:animate-pulse">
+              <i className="em em-grinning" /> Wotta
+            </span>
           </Link>
         </div>
 
@@ -89,17 +90,16 @@ const Nav = ({ navigation }) => {
                 let current = Route().isCurrent(item.url)
                 return (
                   <li className="mr-3" key={item.id}>
-                    <Link href={item.url}>
-                      <a
-                        className={`inline-block py-2 px-4 no-underline text-xl ${
-                          current
-                            ? "text-pink-600 font-medium"
-                            : "text-gray-600 hover:text-pink-600 hover:text-underline"
-                        }`}
-                        target={item.blank ? "_blank" : "_self"}
-                      >
-                        {item.name}
-                      </a>
+                    <Link
+                      href={item.url}
+                      className={`inline-block py-2 px-4 no-underline text-xl ${
+                        current
+                          ? "text-pink-600 font-medium"
+                          : "text-gray-600 hover:text-pink-600 hover:text-underline"
+                      }`}
+                      target={item.blank ? "_blank" : "_self"}
+                    >
+                      {item.name}
                     </Link>
                   </li>
                 )
