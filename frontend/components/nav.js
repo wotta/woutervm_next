@@ -6,13 +6,15 @@ import { useState, useEffect, useRef } from "react"
 const Nav = ({ navigation }) => {
   const [isOpen, setIsOpen] = useState(false)
   const menuRef = useRef(null)
+  const burgerRef = useRef(null)
 
   useEffect(() => {
     const clickAway = (ev) => {
       if (
         isOpen === true &&
         menuRef.current &&
-        !menuRef.current.contains(ev.target)
+        !menuRef.current.contains(ev.target) &&
+        !burgerRef.current.contains(ev.target)
       ) {
         setIsOpen(false)
       }
@@ -55,6 +57,7 @@ const Nav = ({ navigation }) => {
           className={`block lg:hidden px-2 text-pink-600 hover:text-gray-600 focus:outline-none focus:text-gray-600 ${
             isOpen && "transform rotate-180"
           }`}
+          ref={burgerRef}
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
