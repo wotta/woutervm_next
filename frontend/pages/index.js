@@ -26,8 +26,6 @@ const Home = ({ navigation, homepage }) => {
                       ...image.properties,
                     }
 
-                    console.log(imageProps)
-
                     return (
                       <div className="flex rounded-full mr-5 ml-3 float-right place-content-start mt-0 overflow-hidden">
                         <Image
