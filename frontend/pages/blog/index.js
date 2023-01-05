@@ -32,9 +32,13 @@ const BlogIndex = ({ blogs }) => {
 
             return (
               <div key={blog.getId()}>
-                <h2>{blog.getTitle()}</h2>
+                <h2 style={{marginBottom: "0px"}}>{blog.getTitle()}</h2>
+                <time
+                  className="text-base muted font-normal"
+                  dateTime={blog.getDateTime()}
+                >{blog.getFormattedDate()}</time>
                 <p>
-                  <a href={`blog/${blog.getSlug()}`}>Read more</a>
+                  <a href={`blog/${blog.getSlug()}`}>{blog.getReadMore()}</a>
                 </p>
               </div>
             )
@@ -47,7 +51,7 @@ const BlogIndex = ({ blogs }) => {
 
 export async function getStaticProps() {
   const blogsRes = await fetchAPI("/blogs", {
-    fields: ["title", "slug", "createdAt"],
+    fields: ["title", "slug", "createdAt", "publishedAt"],
     sort: "createdAt:desc",
   })
 
