@@ -32,11 +32,13 @@ const BlogIndex = ({ blogs }) => {
 
             return (
               <div key={blog.getId()}>
-                <h2 style={{marginBottom: "0px"}}>{blog.getTitle()}</h2>
+                <h2 style={{ marginBottom: "0px" }}>{blog.getTitle()}</h2>
                 <time
                   className="text-base muted font-normal"
                   dateTime={blog.getDateTime()}
-                >{blog.getFormattedDate()}</time>
+                >
+                  {blog.getFormattedDate()}
+                </time>
                 <p>
                   <a href={`blog/${blog.getSlug()}`}>{blog.getReadMore()}</a>
                 </p>
