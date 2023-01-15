@@ -27,4 +27,6 @@ jobs:
           # This part is also where you can pass other options, for example:
           prettier_options: --write frontend/{components,lib,mappers,pages}/*.{js,md}
           only_changed: True
+          same_commit: True
+        env:
           github_token: ${{ secrets.GITHUB_TOKEN }}
