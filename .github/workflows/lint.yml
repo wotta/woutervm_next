@@ -15,12 +15,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
+          # Make sure the value of GITHUB_TOKEN will not be persisted in repo's config
+          persist-credentials: false
 
       - name: Prettify code
         uses: creyD/prettier_action@v4.2
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --check frontend/{components,lib,mappers,pages}/*.{js,md}
-          dry: true
+          prettier_options: --write frontend/{components,lib,mappers,pages}/*.{js,md}
+          only_changed: True
+          same_commit: True
+        env:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

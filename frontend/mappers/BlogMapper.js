@@ -15,6 +15,12 @@ class BlogMapper {
     return this.attributes.title
   }
 
+  getReadMore(maxLength = 50) {
+    return this.getTitle().length > maxLength
+      ? this.getTitle().substring(0, maxLength) + " ... read more"
+      : this.getTitle()
+  }
+
   getSlug() {
     return this.attributes.slug
   }
