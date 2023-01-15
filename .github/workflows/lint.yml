@@ -22,5 +22,5 @@ jobs:
         uses: creyD/prettier_action@v4.2
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: --check frontend/{components,lib,mappers,pages}/*.{js,md}
-          dry: true
+          prettier_options: --write frontend/{components,lib,mappers,pages}/*.{js,md}
+          only_changed: True
