@@ -35,7 +35,7 @@ const Nav = ({ navigation }) => {
   return (
     <>
       <nav
-        className={`flex px-11 items-center justify-between flex-wrap py-4 fixed w-full z-10 top-0 text-lg ${
+        className={`flex px-8 items-center justify-between flex-wrap py-4 fixed w-full z-10 top-0 text-lg ${
           isOpen
             ? "shadow-lg bg-gray-200 dark:bg-grey-200"
             : "bg-gray-100 dark:bg-grey-100"
