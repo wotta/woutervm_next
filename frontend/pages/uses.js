@@ -35,6 +35,7 @@ export async function getStaticProps(context) {
   return {
     props: { uses: usesRes.data },
     revalidate: 1,
+    notFound: usesRes.data.length === 0,
   }
 }
 
