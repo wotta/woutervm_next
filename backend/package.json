@@ -4,7 +4,7 @@
     "@strapi/plugin-i18n": "^4.3.3",
     "@strapi/plugin-users-permissions": "^4.12.1",
     "@strapi/provider-upload-cloudinary": "^4.3.3",
-    "@strapi/strapi": "^4.10.8",
+    "@strapi/strapi": "^4.13.1",
     "better-sqlite3": "7.4.6",
     "lodash.set": "^4.3.2",
     "mime-types": "^2.1.27",
